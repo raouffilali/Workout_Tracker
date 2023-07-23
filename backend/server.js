@@ -7,6 +7,10 @@ let PORT = process.env.PORT;
 let MONGO_URI = process.env.MONGO_URI;
 // express App
 const app = express();
+// require corse
+const cors = require("cors");
+// use cors
+app.use(cors());
 
 // middleware
 app.use(express.json());
@@ -23,7 +27,6 @@ app.use("/api/workouts", workoutRoutes);
 mongoose
   .connect(MONGO_URI)
   .then(() => {
-
     // listen for request
     app.listen(PORT, () => {
       console.log(`MONGODB connected && Listening on port ${PORT}`);
