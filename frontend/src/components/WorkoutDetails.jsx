@@ -1,7 +1,27 @@
 /* eslint-disable react/prop-types */
 import PropTypes from "prop-types";
+import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
+import { AiFillDelete } from "react-icons/ai";
 
 const WorkoutDetails = ({ workout }) => {
+  const { dispatch } = useWorkoutsContext();
+
+  const handleClick = async () => {
+    const response = await fetch(
+      `http://localhost:3000/api/workouts/${workout._id}`,
+      {
+        method: "DELETE",
+      }
+    );
+    const json = await response.json();
+
+    if (response.ok) {
+      alert(json.message);
+      // Delete workout from state
+      dispatch({ type: "DELETE_WORKOUT", payload: json });
+    }
+  };
+
   const formatDate = (timestamp) => {
     const dateObj = new Date(timestamp);
     const date = dateObj.toLocaleDateString(); // Format: MM/DD/YYYY
@@ -31,6 +51,9 @@ const WorkoutDetails = ({ workout }) => {
         <strong>Time: </strong>
         {time}
       </p>
+      <span onClick={handleClick}>
+        <AiFillDelete size={25} color="red" />
+      </span>
     </div>
   );
 };
