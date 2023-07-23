@@ -1,31 +1,75 @@
-/* eslint-disable no-unused-vars */
-import { useEffect, useState } from "react";
-import WorkoutDetails from "../components/WorkoutDetails";
 
-function Home() {
+
+// MINE
+import { useEffect, useState } from "react";
+
+// components
+import WorkoutDetails from "../components/WorkoutDetails";
+import WorkoutForm from "../components/WorkoutForm";
+
+const Home = () => {
   const [workouts, setWorkouts] = useState(null);
 
   useEffect(() => {
-    const fetchWorkout = async () => {
-      // fetch using axios
-
+    const fetchWorkouts = async () => {
       const response = await fetch("http://localhost:3000/api/workouts");
       const json = await response.json();
-      response.ok ? setWorkouts(json) : console.log("there is a problem");
+
+      if (response.ok) {
+        setWorkouts(json);
+      }
     };
-    fetchWorkout();
+
+    fetchWorkouts();
   }, []);
 
   return (
-    <div className="div home">
-      <div className="div workouts">
+    <div className="home">
+      <div className="workouts">
         {workouts &&
-          workouts.map((workout) =>(
-            <WorkoutDetails key={workout._id} workout={workout} />
-          ) )}
+          workouts.map((workout) => (
+            <WorkoutDetails workout={workout} key={workout._id} />
+          ))}
       </div>
+      <WorkoutForm />
     </div>
   );
-}
+};
 
 export default Home;
+// import { useEffect, useState } from "react";
+
+// // components
+// import WorkoutDetails from "../components/WorkoutDetails";
+// import WorkoutForm from "../components/WorkoutForm";
+
+// const Home = () => {
+//   const [workouts, setWorkouts] = useState(null);
+
+//   useEffect(() => {
+//     const fetchWorkouts = async () => {
+//       const response = await fetch("http://localhost:3000/api/workouts");
+//       const json = await response.json();
+
+//       if (response.ok) {
+//         setWorkouts(json);
+//       }
+//     };
+
+//     fetchWorkouts();
+//   }, []);
+
+//   return (
+//     <div className="home">
+//       <div className="workouts">
+//         {workouts &&
+//           workouts.map((workout) => (
+//             <WorkoutDetails workout={workout} key={workout._id} />
+//           ))}
+//       </div>
+//       <WorkoutForm />
+//     </div>
+//   );
+// };
+
+// export default Home;
