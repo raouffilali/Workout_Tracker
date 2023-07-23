@@ -52,7 +52,7 @@ const WorkoutDetails = ({ workout }) => {
         {time}
       </p>
       <span onClick={handleClick}>
-        <AiFillDelete size={25} color="red" />
+        <AiFillDelete size={25} color="black" />
       </span>
     </div>
   );
