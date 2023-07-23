@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import PropTypes from "prop-types";
 import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
-import { AiFillDelete } from "react-icons/ai";
+// import { AiFillDelete } from "react-icons/ai";
+import formatDistanceToNow from "date-fns/formatDistanceToNow";
 
 const WorkoutDetails = ({ workout }) => {
   const { dispatch } = useWorkoutsContext();
@@ -51,9 +52,16 @@ const WorkoutDetails = ({ workout }) => {
         <strong>Time: </strong>
         {time}
       </p>
-      <span onClick={handleClick}>
-        <AiFillDelete size={25} color="black" />
+      <p>
+        <strong>Added: </strong>
+        {formatDistanceToNow(new Date(workout.createdAt),{addSuffix: true})}
+      </p>
+      <span className="material-symbols-outlined" onClick={handleClick}>
+        delete
       </span>
+      {/*       <span onClick={handleClick}>
+        <AiFillDelete size={25} color="black" />
+      </span> */}
     </div>
   );
 };
