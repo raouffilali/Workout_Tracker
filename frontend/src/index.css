@@ -40,11 +40,11 @@ header a {
 }
 .workout-details {
   background: #fff;
-  border-radius: 4px;
+  border-radius: 10px;
   margin: 20px auto;
   padding: 20px;
   position: relative;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+  box-shadow: 2px 2px 5px rgba(128, 31, 31, 0.05);
 }
 .workout-details h4 {
   margin: 0 0 10px 0;
