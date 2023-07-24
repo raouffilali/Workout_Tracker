@@ -18,6 +18,8 @@ const WorkoutDetails = ({ workout }) => {
 
     if (response.ok) {
       alert(json.message);
+      // reload page
+      window.location.reload();
       // Delete workout from state
       dispatch({ type: "DELETE_WORKOUT", payload: json });
     }
@@ -54,7 +56,7 @@ const WorkoutDetails = ({ workout }) => {
       </p>
       <p>
         <strong>Added: </strong>
-        {formatDistanceToNow(new Date(workout.createdAt),{addSuffix: true})}
+        {formatDistanceToNow(new Date(workout.createdAt), { addSuffix: true })}
       </p>
       <span className="material-symbols-outlined" onClick={handleClick}>
         delete
