@@ -17,7 +17,9 @@ const WorkoutDetails = ({ workout }) => {
     const json = await response.json();
 
     if (response.ok) {
-      alert(json.message);
+      //a modern  dialog box to say deleted successfully
+      alert("Deleted successfully");
+
       // reload page
       window.location.reload();
       // Delete workout from state
