@@ -9,7 +9,7 @@ const WorkoutDetails = ({ workout }) => {
 
   const handleClick = async () => {
     const response = await fetch(
-      `http://localhost:3000/api/workouts/${workout._id}`,
+      "http://localhost:3000/api/workouts/" + workout._id,
       {
         method: "DELETE",
       }
@@ -17,10 +17,10 @@ const WorkoutDetails = ({ workout }) => {
     const json = await response.json();
 
     if (response.ok) {
-      //a modern  dialog box to say deleted successfully
-      alert("Deleted successfully");
+      // //a modern  dialog box to say deleted successfully
+      // alert("Deleted successfully");
 
-      // reload page
+      // // reload page
       window.location.reload();
       // Delete workout from state
       dispatch({ type: "DELETE_WORKOUT", payload: json });
